@@ -45,7 +45,7 @@ module DropletKit
 
     def total_pages
       return nil if self.total.nil?
-      
+
       (self.total.to_f / per_page.to_f).ceil
     end
 
@@ -64,7 +64,7 @@ module DropletKit
       invoker = ResourceKit::ActionInvoker.new(action, resource, *@args)
       invoker.options[:per_page] ||= per_page
       invoker.options[:page]       = page
-
+      # require 'pry'; binding.pry
       @collection += invoker.handle_response
 
       if total.nil?
